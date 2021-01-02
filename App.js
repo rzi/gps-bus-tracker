@@ -184,9 +184,9 @@ export default class App extends Component {
 
   renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Text style={styles.text}>{item.text}</Text>
-      <Text style={styles.text}>{item.text2}</Text>
-      <Text style={styles.text}>{item.text3}</Text>
+      <Text style={styles.textStyle3}>{item.text}</Text>
+      <Text style={styles.textStyle3}>{item.text2}</Text>
+      <Text style={styles.textStyle3}>{item.text3}</Text>
     </View>
   );
   setModalVisible = (visible) => {
@@ -285,7 +285,13 @@ export default class App extends Component {
               {this.state.error ? <Text>Error: {this.state.error}</Text> : null}
             </View>
           </TouchableOpacity>
-          <View style={styles.textStyle2}>
+          <TouchableOpacity
+            style={styles.textStyle2}
+            onPress={() => {
+              this.setState({ Data: [] });
+              this.setState({ badgeMyIndex: 0 });
+            }}
+          >
             <Text
               style={{
                 color: "white",
@@ -296,7 +302,8 @@ export default class App extends Component {
             >
               Tabela pozycji GPS ({this.state.badgeMyIndex})
             </Text>
-          </View>
+          </TouchableOpacity>
+
           <FlatList
             style={styles.mytabela}
             data={this.state.Data.reverse()}
@@ -353,13 +360,14 @@ const styles = StyleSheet.create({
     margin: 10,
     color: "white",
   },
-  text: {
+  textStyle3: {
     marginVertical: 4,
     fontSize: 10,
     marginLeft: 10,
+    color: "white",
   },
   item: {
-    backgroundColor: "#ede",
+    backgroundColor: "#2196F3",
     padding: 10,
     marginVertical: 5,
     height: 90,

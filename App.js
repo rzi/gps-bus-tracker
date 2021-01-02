@@ -30,7 +30,7 @@ export default class App extends Component {
       idName: "",
       watchId: null,
       badgeMyIndex: 0,
-      modalVisible: false,
+      modalVisible: true,
     };
   }
   componentDidMount() {

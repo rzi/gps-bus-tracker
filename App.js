@@ -12,20 +12,7 @@ import {
   Button,
   Modal,
 } from "react-native";
-//import { Ionicons } from "@expo/vector-icons";
-//import { NavigationContainer } from "@react-navigation/native";
-//import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-//import BackgroundGeolocation from "react-native-background-geolocation";
-//import { Badge } from 'react-native-paper';
-//import { LinearGradient } from "expo";
-//import { Badge } from "react-native-elements";
-
-//import MapView from "react-native-maps";
-//import { Marker } from "react-native-maps";
-//import { Callout } from "react-native-maps";
-import Intro from "./components/intro";
 const axios = require("axios");
-
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -181,7 +168,6 @@ export default class App extends Component {
         });
     });
   };
-
   renderItem = ({ item }) => (
     <View style={styles.item}>
       <Text style={styles.textStyle3}>{item.text}</Text>

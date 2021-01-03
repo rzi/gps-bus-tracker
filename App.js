@@ -28,6 +28,7 @@ export default class App extends Component {
       latitudeDelta: 0.1,
       longitudeDelta: 0.1,
       idName: "",
+      idIndex: "",
       watchId: null,
       badgeMyIndex: 0,
       modalVisible: true,
@@ -100,7 +101,9 @@ export default class App extends Component {
               this.state.longitude +
               `&s=0` +
               `&idName=` +
-              this.state.idName
+              this.state.idName +
+              `&idIndex= ` +
+              this.state.idIndex
           )
           .then((result) => {
             console.log("axios success " + result.data + " timestamp: " + n);
@@ -153,7 +156,9 @@ export default class App extends Component {
             `&s=` +
             speed +
             `&idName=` +
-            this.state.idName
+            this.state.idName +
+            `&idIndex=` +
+            this.state.idIndex
         )
         .then((result) => {
           console.log(
@@ -211,6 +216,21 @@ export default class App extends Component {
                       console.log(`idName: ${event.nativeEvent.text}`);
                     }}
                   ></TextInput>
+
+                  <Text style={{ padding: 10, fontSize: 20 }}>
+                    Identyfikator kursu:{" "}
+                  </Text>
+                  <TextInput
+                    style={{ padding: 10, fontSize: 20 }}
+                    editable={true}
+                    selectionColor={"blue"}
+                    underlineColorAndroid={"gray"}
+                    placeholder="Wprowadź identyfikator"
+                    onSubmitEditing={(event) => {
+                      this.setState({ idIndex: event.nativeEvent.text });
+                      console.log(`idIndex: ${event.nativeEvent.text}`);
+                    }}
+                  ></TextInput>
                 </View>
 
                 <TouchableHighlight
@@ -253,7 +273,7 @@ export default class App extends Component {
                   textAlign: "center",
                 }}
               >
-                Identyfikator:{" "}
+                Identyfikator trasy:{" "}
                 <Text
                   style={{
                     color: "red",
@@ -263,6 +283,24 @@ export default class App extends Component {
                 >
                   {" "}
                   {this.state.idName}{" "}
+                </Text>
+              </Text>
+              <Text
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                }}
+              >
+                Identyfikator kursu:{" "}
+                <Text
+                  style={{
+                    color: "red",
+                    textAlign: "center",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {" "}
+                  {this.state.idIndex}{" "}
                 </Text>
               </Text>
               <Text>Latitude: {this.state.latitude}</Text>
